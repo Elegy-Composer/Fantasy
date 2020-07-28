@@ -8,9 +8,9 @@ namespace Fight
 {
     public class FightSceneLoader
     {
-        public static void LoadScene(string BossName)
+        public static void LoadScene(string LordName)
         {
-            SceneLoadingModel.BossName = BossName;
+            SceneLoadingModel.LordName = LordName;
             //Load scene
             SceneManager.LoadScene("FightScene");
         }
