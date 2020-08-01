@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace PlayerMovement
+namespace PlayerController
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerMovement : MonoBehaviour
     {
-
         #region Move variable
-        public Rigidbody2D rb; 
+        public Rigidbody2D rb;
         [SerializeField]
         private float moveSpeed;
         private Vector2 movement;
@@ -23,8 +22,8 @@ namespace PlayerMovement
 
         void Update()
         {
-            movement.x = Input.GetAxisRaw("Horizontal");
-            movement.y = Input.GetAxisRaw("Vertical");
+            movement.x = Input.GetAxis("Horizontal");
+            movement.y = Input.GetAxis("Vertical");
             /*anim.SetFloat("horizontal", movement.x);
             anim.SetFloat("vertical", movement.y);
             anim.SetFloat("speed", movement.sqrMagnitude);*/
