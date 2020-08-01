@@ -1,5 +1,4 @@
 ﻿
-
 namespace Fight.Lord
 {
     public class Lord : LivingThing
