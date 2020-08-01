@@ -1,7 +1,5 @@
-using System.Runtime.Remoting.Messaging;
-using UnityTemplateProjects.LivingThing;
-
-namespace LivingThing
+using LivingThing;
+namespace Fight
 {
     public class LivingThing
     {
@@ -36,7 +34,6 @@ namespace LivingThing
         public Status status;
 
         private string name;
-
         public string Name => name;
 
         public LivingThing(string name, int attack, int defense, int speed, int hp)

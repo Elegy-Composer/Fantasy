@@ -1,4 +1,4 @@
-namespace UnityTemplateProjects.LivingThing
+namespace LivingThing
 {
     public enum Status
     {

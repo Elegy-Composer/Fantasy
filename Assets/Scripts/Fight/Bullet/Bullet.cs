@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
 namespace Fight.Bullet
 {
     public class Bullet : MonoBehaviour
@@ -16,7 +13,7 @@ namespace Fight.Bullet
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
             transform.position += (Vector3) velocity * Time.deltaTime;
         }
