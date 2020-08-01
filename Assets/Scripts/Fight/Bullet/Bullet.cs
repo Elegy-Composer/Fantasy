@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
+using LivingThing;
+
 namespace Fight.Bullet
 {
     public class Bullet : MonoBehaviour
     {
         public Vector2 velocity;
-        public LivingThing sender;
+        public LivingThing.LivingThing sender;
 
-        public Bullet(LivingThing sender, Vector2 velocity)
+        public Bullet(LivingThing.LivingThing sender, Vector2 velocity)
         {
             this.velocity = velocity;
             this.sender = sender;

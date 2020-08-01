@@ -1,9 +1,9 @@
 ﻿
 namespace Fight.Lord
 {
-    public class Lord : LivingThing
+    public class Lord : LivingThing.LivingThing
     {
-        public Lord(string name, int attack, int defense, int speed, int hp) : base(name, attack, defense, speed, hp)
+        public Lord(string name, int attack, int defense, float speed, int hp) : base(name, attack, defense, speed, hp)
         {
 
         }
