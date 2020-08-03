@@ -4,26 +4,26 @@ namespace LivingThing
 {
     public class LivingThingController : MonoBehaviour
     {
-        public Transform transform;
+        public Rigidbody2D body;
         public LivingThing controlled;
 
-        void Update()
+        void FixedUpdate()
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKey(KeyCode.UpArrow))
             {
-                transform.position += Vector3.up * controlled.speed;
+                body.MovePosition(body.position + controlled.speed * Time.deltaTime * Vector2.up);
             }
-            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            else if (Input.GetKey(KeyCode.DownArrow))
             {
-                transform.position += Vector3.down * controlled.speed;
+                body.MovePosition(body.position + controlled.speed * Time.deltaTime * Vector2.down);
             }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            else if (Input.GetKey(KeyCode.LeftArrow))
             {
-                transform.position += Vector3.left * controlled.speed;
+                body.MovePosition(body.position + controlled.speed * Time.deltaTime * Vector2.left);
             }
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            else if (Input.GetKey(KeyCode.RightArrow))
             {
-                transform.position += Vector3.right * controlled.speed;
+                body.MovePosition(body.position + controlled.speed * Time.deltaTime * Vector2.right);
             }
         }
     }

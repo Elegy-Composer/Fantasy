@@ -17,11 +17,8 @@ namespace LivingThing
 
         public Status status;
 
-        public string name;
-
-        public LivingThing(string name, int attack, int defense, float speed, int hp)
+        public LivingThing(int attack, int defense, float speed, int hp)
         {
-            this.name = name;
             this.attack = attack;
             this.defense = defense;
             this.speed = speed;
