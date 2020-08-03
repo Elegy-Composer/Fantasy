@@ -28,7 +28,6 @@ namespace LivingThing
 
         public LivingThing()
         {
-            name = "example name";
             attack = 10;
             defense = 20;
             speed = 10;

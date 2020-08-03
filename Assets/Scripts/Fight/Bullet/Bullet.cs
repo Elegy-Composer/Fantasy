@@ -23,10 +23,10 @@ namespace Fight.Bullet
             LookAtVelocity();
             body.MovePosition(body.position + velocity * Time.deltaTime);
 
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                velocity.y *= -1;
-            }
+            // if (Input.GetKeyDown(KeyCode.A))
+            // {
+            //     velocity.y *= -1;
+            // }
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
