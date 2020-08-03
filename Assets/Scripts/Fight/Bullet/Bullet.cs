@@ -10,11 +10,13 @@ namespace Fight.Bullet
         public Vector2 velocity;
         public LivingThing.LivingThing sender;
         public Rigidbody2D body;
+        public int attack;
 
         public Bullet(LivingThing.LivingThing sender, Vector2 velocity)
         {
             this.velocity = velocity;
             this.sender = sender;
+            attack = sender.attack;
         }
 
         // Update is called once per frame
@@ -29,15 +31,13 @@ namespace Fight.Bullet
             // }
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             Debug.Log("collided");
-            // if (collision.collider.name == "protagonist")
-            // {
-            //     Component victim = collision.collider.GetComponent<LivingThing.LivingThing>();
-            //     Debug.Log(victim);
-            //     Debug.Log(sender.attack);
-            // }
+            var protagonist = other.gameObject.GetComponent<Character.Character>();
+            if (protagonist == null) return; // The collider is not a character
+            protagonist.attacked(attack);
+            Destroy(gameObject);
         }
 
         private void LookAtVelocity()

@@ -218,8 +218,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 3, y: 0}
-  sender: {fileID: 1093274762}
+  sender: {fileID: 0}
   body: {fileID: 118075226}
+  attack: 10
 --- !u!60 &118075225
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -230,7 +231,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -479,13 +480,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1093274759}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d361b91cb2e467694e8e03efaf564ae, type: 3}
+  m_Script: {fileID: 11500000, guid: 31c9443f4327e16a394f802c957cfd27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: 10
-  defense: 20
-  speed: 10
-  hp: 40
+  attack: 20
+  defense: 0
+  speed: 0
+  hp: 0
   status: 0
 --- !u!1 &1261139266
 GameObject:
@@ -581,13 +582,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1261139266}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d361b91cb2e467694e8e03efaf564ae, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c21de3d3edc4109a674d8bf0e463929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: 10
-  defense: 20
+  attack: 0
+  defense: 0
   speed: 10
-  hp: 40
+  hp: 10
   status: 0
 --- !u!114 &1261139270
 MonoBehaviour:
@@ -613,7 +614,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

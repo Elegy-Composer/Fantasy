@@ -34,5 +34,31 @@ namespace LivingThing
             hp = 40;
             status = Status.ALIVE;
         }
+
+        public void attacked(int amount)
+        {
+            var HealthLoss = amount - defense;
+            if (HealthLoss < 0)
+            {
+                return;
+            }
+
+            LoseHealth(HealthLoss);
+        }
+
+        private void LoseHealth(int HealthLoss)
+        {
+            hp -= HealthLoss;
+            if (hp <= 0)
+            {
+                Die();
+            }
+        }
+
+        private void Die()
+        {
+            Debug.Log(name+" is killed");
+            status = Status.DEAD;
+        }
     }
 }
