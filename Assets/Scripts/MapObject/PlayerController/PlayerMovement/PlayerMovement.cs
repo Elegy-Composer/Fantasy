@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace PlayerController
+namespace MapObject.PlayerController
 {
     public class PlayerMovement : MonoBehaviour
     {
@@ -31,7 +31,7 @@ namespace PlayerController
 
         private void FixedUpdate()
         {
-            if (isFaceRight && movement.x < 0f || !isFaceRight && movement.x > 0f)
+            if (isFaceRight && movement.x < 0f || !isFaceRight && movement.x > 0f)//flip the character
             {
                 float x = transform.localScale.x;
                 float y = transform.localScale.y;
