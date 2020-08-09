@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using MapObject.Enemy;
+using MapObject.Movement;
 
 namespace MapObject.Enemy
 {
-    public class Patrolling : EnemyMovement
+    public class Patrolling : MonoBehaviour
     {
+        public MovementData move;
 
         #region Search-Range Variable
 
@@ -17,14 +18,16 @@ namespace MapObject.Enemy
         [SerializeField]
         private float halfSearchHeight;
         
-        private int c_step;//current step
-        private int g_step;//goal step
+        private int currentStep;//current step
+        private int goalStep;//goal step
 
         #endregion
 
+        #region Main Method
+
         private void Start()
         {
-            origin = rb.position;
+            origin = move.rb.position;
             ChangeDirection();
         }
 
@@ -32,23 +35,36 @@ namespace MapObject.Enemy
         {
             float x = transform.position.x;
             float y = transform.position.y;
-            anim.SetFloat("speed", movement.sqrMagnitude);
+            move.anim.SetFloat("speed", move.movement.sqrMagnitude);
             //if go outside the search range
             if (x <= origin.x - halfSearchWidth || x >= origin.x + halfSearchWidth || y <= origin.y - halfSearchHeight || y >= origin.y + halfSearchHeight)
             {
-                movement *= -1;//go back
+                move.movement *= -1;//go back
             }
         }
 
         private void FixedUpdate()
         {
-            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+            if (move.isFacingRight && move.movement.x < 0f || !move.isFacingRight && move.movement.x > 0f)//flip the character
+            {
+                float x = transform.localScale.x;
+                float y = transform.localScale.y;
+                float z = transform.localScale.z;
+                x *= -1;
+                transform.localScale = new Vector3(x, y, z);
+                move.isFacingRight = !move.isFacingRight;
+            }
+            move.rb.MovePosition(move.rb.position + move.movement * move.moveSpeed * Time.fixedDeltaTime);
         }
+
+        #endregion
+
+        #region Decide Action Method
 
         public void CheckStep()
         {
-            c_step += 1;
-            if (c_step == g_step)
+            currentStep += 1;
+            if (currentStep == goalStep)
             {
                 ChangeDirection();//has moved required steps
             }
@@ -60,7 +76,7 @@ namespace MapObject.Enemy
 
         public void ChangeDirection()
         {
-            movement = new Vector2(0, 0);
+            move.movement = new Vector2(0, 0);
             int stopChance = Random.Range(1, 5);
             if (stopChance == 1)
             {
@@ -70,21 +86,21 @@ namespace MapObject.Enemy
             {
                 int dir = SetDirection();
                 Debug.Log(dir);
-                g_step = Random.Range(2, 4);
-                c_step = 0;
+                goalStep = Random.Range(2, 4);
+                currentStep = 0;
                 switch (dir)
                 {
                     case 0:
-                        movement = new Vector2(1, 0);
+                        move.movement = new Vector2(1, 0);
                         break;
                     case 1:
-                        movement = new Vector2(-1, 0);
+                        move.movement = new Vector2(-1, 0);
                         break;
                     case 2:
-                        movement = new Vector2(0, 1);
+                        move.movement = new Vector2(0, 1);
                         break;
                     case 3:
-                        movement = new Vector2(0, -1);
+                        move.movement = new Vector2(0, -1);
                         break;
                 }
             }
@@ -139,5 +155,6 @@ namespace MapObject.Enemy
                 return Random.Range(0, 4);
             }
         }
+        #endregion
     }
 }

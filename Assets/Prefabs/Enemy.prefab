@@ -97,11 +97,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55a239564057cb94699d7d98397abdee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 8510521942677746910}
-  moveSpeed: 1.4
-  movement: {x: 0, y: 0}
-  isFaceingRight: 0
-  anim: {fileID: 4189958330967531288}
+  move:
+    _rb: {fileID: 8510521942677746910}
+    _moveSpeed: 1.4
+    movement: {x: 0, y: 0}
+    isFacingRight: 0
+    _anim: {fileID: 4189958330967531288}
   origin: {x: 0, y: 0}
   halfSearchWidth: 4
   halfSearchHeight: 4
@@ -139,7 +140,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.012856126, y: -0.05573225}
+  m_Offset: {x: 0.0051926374, y: -0.42220098}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -150,7 +151,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0945394, y: 1.2182555}
+  m_Size: {x: 0.6180519, y: 0.46365488}
   m_EdgeRadius: 0
 --- !u!95 &4189958330967531288
 Animator:
