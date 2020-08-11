@@ -115,10 +115,11 @@ namespace MapObject.Enemy
         
         public int SetDirection()//movment will tend to go back to the center
         {
-            float right = (Mathf.Abs(transform.position.x - origin.x - halfSearchWidth) / (halfSearchWidth * 2));
-            float left = (1 - right);
-            float up = (Mathf.Abs(transform.position.y - origin.y - halfSearchHeight) / (halfSearchHeight * 2));
-            float down = (1 - up);
+            //float right = (Mathf.Abs(transform.position.x - origin.x - halfSearchWidth) / (halfSearchWidth * 2));
+            float right = (Mathf.Abs(transform.position.x - origin.x - halfSearchWidth));
+            float left = (halfSearchWidth * 2 - right);
+            float up = (Mathf.Abs(transform.position.y - origin.y - halfSearchHeight));
+            float down = (halfSearchHeight * 2 - up);
 
             float total = right + left + up + down;
             Debug.Log(right);
