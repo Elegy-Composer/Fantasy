@@ -1,18 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Fight;
+using UnityEngine.SceneManagement;
+using Fight.Model;
 
 namespace MapObject.PlayerController
 {
     public class CollisionManager : MonoBehaviour
     {
-        private void OnCollisionEnter2D(Collision2D collision)
+        private void OnTriggerEnter2D(Collider2D collision)//set a trigger for non-physic collision
         {
-            if (collision.gameObject.tag == "enemy")
+            if (collision.gameObject.tag == "lord")
             {
-                Debug.Log("encounter with an enemy");
+                Debug.Log("encounter with a lord");
+                SceneLoadingModel.LordName = collision.gameObject.name;
+                SceneManager.LoadScene("FightScene");
             }
         }
     }
+
+    
 }
