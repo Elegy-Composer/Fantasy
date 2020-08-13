@@ -6,7 +6,7 @@ namespace MapObject.Clock
 {
     public static class Clock
     {
-        public static int hour;
+        public static int hour=24;
         public static int minute;
     }
 }
