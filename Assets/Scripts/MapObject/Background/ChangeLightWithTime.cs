@@ -28,7 +28,6 @@ namespace MapObject.Background
 
             if (hour >= 9 && hour < 17)//daytime
             {
-                Debug.Log("in daytime");
                 int adjustedTime = hour - 9;
                 ratio = (adjustedTime * 3600 + minute * 60) / 28800f;
                 lightColor = Vector4.Lerp(dayColor, dawnColor, ratio);
@@ -36,7 +35,6 @@ namespace MapObject.Background
 
             else if (hour >= 17 || hour < 1)//dawn
             {
-                Debug.Log("in dawn");
                 int adjustedTime = hour - 17;
                 ratio = (adjustedTime * 3600 + minute * 60) / 28800f;
                 lightColor = Vector4.Lerp(dawnColor, nightColor, ratio);
@@ -44,7 +42,6 @@ namespace MapObject.Background
 
             else//nighttime
             {
-                Debug.Log("in nighttime");
                 int adjustedTime = hour - 1;
                 ratio = (adjustedTime * 3600 + minute * 60) / 28800f;
                 lightColor = Vector4.Lerp(nightColor, dayColor, ratio);

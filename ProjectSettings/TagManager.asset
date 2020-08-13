@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - lord
+  - enemy
+  - treasurebox
+  - opened
   layers:
   - Default
   - TransparentFX

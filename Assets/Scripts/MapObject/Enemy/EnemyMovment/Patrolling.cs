@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MapObject.Movement;
 
-namespace MapObject.Enemy
+namespace MapObject.Enemy.EnemyMovement
 {
     public class Patrolling : MonoBehaviour
     {

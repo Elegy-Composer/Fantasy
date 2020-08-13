@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using MapObject.Movement;
+using TMPro;
 
-namespace MapObject.PlayerController
+namespace MapObject.PlayerController.PlayerMovement
 {
     public class PlayerMovement : MonoBehaviour
     {
@@ -13,6 +14,22 @@ namespace MapObject.PlayerController
 
         void Update()
         {
+            #region InteractMovement
+
+            if (CollisionManager.interactObject != null)//has something to interact
+            {
+                if (Input.GetKeyDown(KeyCode.Z))
+                {
+                    CollisionManager.interactObject.GetComponent<Interactable.Interactable>().Interact();
+
+                    CollisionManager.interactObject = null;//after interacting 
+                    TextMeshProUGUI hint = GameObject.Find("HintText").GetComponent<TextMeshProUGUI>();
+                    hint.text = "";                  
+                }
+            }
+
+            #endregion
+
             float x = Input.GetAxis("Horizontal");
             float y = Input.GetAxis("Vertical");
             move.movement = new Vector2(x, y);
