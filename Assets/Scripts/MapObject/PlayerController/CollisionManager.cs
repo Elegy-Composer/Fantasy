@@ -10,6 +10,12 @@ namespace MapObject.PlayerController
     public class CollisionManager : MonoBehaviour
     {
         public static GameObject interactObject;
+        public GameObject hint;
+
+        private void Update()
+        {
+            Debug.Log(interactObject);
+        }
 
         private void OnTriggerEnter2D(Collider2D collision)//set a trigger for non-physic collision
         {
@@ -23,10 +29,8 @@ namespace MapObject.PlayerController
             if (collision.gameObject.tag == "treasurebox")
             {
                 Debug.Log("find a treasure box");
-                Debug.Log(GameObject.Find("HintText"));
-                TextMeshProUGUI hint = GameObject.Find("HintText").GetComponent<TextMeshProUGUI>();
-                Debug.Log(hint);
-                hint.text = "press z to open";
+                hint.GetComponent<Animator>().enabled = true;
+                hint.GetComponent<TextMeshProUGUI>().text = "press z to open";
                 interactObject = collision.gameObject;
             }
         }
@@ -35,8 +39,8 @@ namespace MapObject.PlayerController
         {
             if (collision.gameObject.tag == "treasurebox") 
             {
-                TextMeshProUGUI hint = GameObject.Find("HintText").GetComponent<TextMeshProUGUI>();
-                hint.text = "";
+                hint.GetComponent<Animator>().enabled = false;
+                hint.GetComponent<TextMeshProUGUI>().text = "";
                 interactObject = null;
             }
         }

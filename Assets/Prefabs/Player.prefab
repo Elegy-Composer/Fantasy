@@ -228,6 +228,7 @@ MonoBehaviour:
     movement: {x: 0, y: 0}
     isFacingRight: 0
     _anim: {fileID: 5820881048181737900}
+  hint: {fileID: 0}
 --- !u!114 &500270847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e17aa037432a05d4a929278213df579d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hint: {fileID: 0}
 --- !u!1 &7377208723080942872
 GameObject:
   m_ObjectHideFlags: 0

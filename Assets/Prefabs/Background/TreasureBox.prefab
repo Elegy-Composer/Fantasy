@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf10bdb848fd3d741b6ba1a3f8012b65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  openSprite: {fileID: 21300000, guid: d965f335fc62a104c88c60c30e4ca9c1, type: 3}
   isOpen: 0
   itemList:
   - body: {fileID: 8455667385769302700, guid: ffcf1528bd3c1a442b7ba9884299edef, type: 3}

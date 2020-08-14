@@ -44,3 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   globalLight: {fileID: 0}
+  dayColor: {r: 0.76862746, g: 0.8627451, b: 0.8980392, a: 0}
+  dawnColor: {r: 0.972549, g: 0.8509804, b: 0.7411765, a: 0}
+  nightColor: {r: 0.18039216, g: 0.26666668, b: 0.59607846, a: 0}

@@ -2,23 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 using MapObject.PlayerController.Backpack;
+using TMPro;
 
 namespace MapObject.Interactable
 {
     public class TreasureManager : Interactable
     {
+        public Sprite openSprite;
         public bool isOpen = false;
         public List<Item> itemList;
 
         public override void Interact()//open the box
         {
+            //make sure the box is opened
             isOpen = true;
             gameObject.tag = "opened";
+            gameObject.GetComponentInChildren<SpriteRenderer>().sprite = openSprite;
+
+            //show item info to player
+            TextMeshProUGUI itemsInfo = GameObject.Find("ItemsInfo").GetComponent<TextMeshProUGUI>();
+            itemsInfo.text = "Get\n";
+            itemsInfo.GetComponentInParent<InfoManager>().ShowInfo();
+
+            //access backpack system
             BackpackManager backpack = GameObject.Find("Backpack").GetComponent<BackpackManager>();
 
             foreach (Item itemInBox in itemList)
             {
                 bool nextItem=false;
+                //show what you got
+                itemsInfo.text += (itemInBox.body.name + "        x " + itemInBox.amount.ToString() + "\n");
 
                 foreach (Item itemInPack in backpack.itemList)
                 {

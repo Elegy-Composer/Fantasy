@@ -10,6 +10,8 @@ namespace MapObject.PlayerController.PlayerMovement
     {
         public MovementData move;
 
+        public GameObject hint;
+
         #region Main Method
 
         void Update()
@@ -18,14 +20,20 @@ namespace MapObject.PlayerController.PlayerMovement
 
             if (CollisionManager.interactObject != null)//has something to interact
             {
+                if (CollisionManager.interactObject.name == "Info")//don't move until close the info panel
+                {
+                    move.rb.bodyType = RigidbodyType2D.Static;
+                }
+
                 if (Input.GetKeyDown(KeyCode.Z))
                 {
                     CollisionManager.interactObject.GetComponent<Interactable.Interactable>().Interact();
 
-                    CollisionManager.interactObject = null;//after interacting 
-                    TextMeshProUGUI hint = GameObject.Find("HintText").GetComponent<TextMeshProUGUI>();
-                    hint.text = "";                  
-                }
+                    CollisionManager.interactObject = null;//after interacting   
+                    move.rb.bodyType = RigidbodyType2D.Dynamic;
+                    hint.GetComponent<Animator>().enabled = false;
+                    hint.GetComponent<TextMeshProUGUI>().text = "";
+                }         
             }
 
             #endregion
