@@ -17,7 +17,7 @@ namespace MapObject.PlayerController
             if (collision.gameObject.tag == "lord")
             {
                 Debug.Log("encounter with a lord");
-                FightSceneLoader.LoadScene("Treant");
+                FightSceneLoader.LoadScene(collision.gameObject.name);
             }
 
             if (collision.gameObject.tag == "treasurebox")
