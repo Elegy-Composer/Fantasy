@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
-using Fight.Model;
+using Fight;
 
 namespace MapObject.PlayerController
 {
@@ -12,18 +12,12 @@ namespace MapObject.PlayerController
         public static GameObject interactObject;
         public GameObject hint;
 
-        private void Update()
-        {
-            Debug.Log(interactObject);
-        }
-
         private void OnTriggerEnter2D(Collider2D collision)//set a trigger for non-physic collision
         {
             if (collision.gameObject.tag == "lord")
             {
                 Debug.Log("encounter with a lord");
-                SceneLoadingModel.LordName = collision.gameObject.name;
-                SceneManager.LoadScene("FightScene");
+                FightSceneLoader.LoadScene("Treant");
             }
 
             if (collision.gameObject.tag == "treasurebox")

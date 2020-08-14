@@ -122,17 +122,12 @@ namespace MapObject.Enemy.EnemyMovement
             float down = (halfSearchHeight * 2 - up);
 
             float total = right + left + up + down;
-            Debug.Log(right);
-            Debug.Log(total);
+
             int r = (int)(right / total * 100);
             int l = (int)(left / total * 100);
             int u = (int)(up / total * 100);
             int d = (int)(down / total * 100);
 
-            Debug.Log(r);
-            Debug.Log(l);
-            Debug.Log(u);
-            Debug.Log(d);
             int n = Random.Range(1, 101);
 
             if (n <= r)
