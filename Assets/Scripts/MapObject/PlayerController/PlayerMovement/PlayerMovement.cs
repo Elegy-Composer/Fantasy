@@ -2,17 +2,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 using MapObject.Movement;
+using TMPro;
 
-namespace MapObject.PlayerController
+namespace MapObject.PlayerController.PlayerMovement
 {
     public class PlayerMovement : MonoBehaviour
     {
         public MovementData move;
 
+        public GameObject hint;
+
         #region Main Method
 
         void Update()
         {
+            #region InteractMovement
+
+            if (CollisionManager.interactObject != null)//has something to interact
+            {
+                if (CollisionManager.interactObject.name == "Info")//don't move until close the info panel
+                {
+                    move.rb.bodyType = RigidbodyType2D.Static;
+                }
+
+                if (Input.GetKeyDown(KeyCode.Z))
+                {
+                    CollisionManager.interactObject.GetComponent<Interactable.Interactable>().Interact();
+
+                    CollisionManager.interactObject = null;//after interacting   
+                    move.rb.bodyType = RigidbodyType2D.Dynamic;
+                    hint.GetComponent<Animator>().enabled = false;
+                    hint.GetComponent<TextMeshProUGUI>().text = "";
+                }         
+            }
+
+            #endregion
+
             float x = Input.GetAxis("Horizontal");
             float y = Input.GetAxis("Vertical");
             move.movement = new Vector2(x, y);
