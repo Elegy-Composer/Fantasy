@@ -36,11 +36,25 @@ namespace MapObject.Enemy.EnemyMovement
             float x = transform.position.x;
             float y = transform.position.y;
             move.anim.SetFloat("speed", move.movement.sqrMagnitude);
+
             //if go outside the search range
-            if (x <= origin.x - halfSearchWidth || x >= origin.x + halfSearchWidth || y <= origin.y - halfSearchHeight || y >= origin.y + halfSearchHeight)
+            if (x <= origin.x - halfSearchWidth)
             {
-                move.movement *= -1;//go back
+                move.movement = new Vector2(1, 0);
             }
+            if (x >= origin.x + halfSearchWidth)
+            {
+                move.movement = new Vector2(-1, 0);
+            }
+            if (y <= origin.y - halfSearchHeight)
+            {
+                move.movement = new Vector2(0, 1);
+            }
+            if (y >= origin.y + halfSearchHeight) 
+            {
+                move.movement = new Vector2(0, -1);               
+            }
+            //go back
         }
 
         private void FixedUpdate()

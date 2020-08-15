@@ -6,8 +6,6 @@ namespace MapObject.Clock
 {
     public class AutoTimer : MonoBehaviour
     {
-
-        // Update is called once per frame
         void FixedUpdate()
         {
             int adjustedTime = (int)(Time.fixedDeltaTime * 180);

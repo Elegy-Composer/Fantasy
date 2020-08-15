@@ -21,8 +21,7 @@ namespace MapObject.Interactable
 
             //show item info to player
             TextMeshProUGUI itemsInfo = GameObject.Find("ItemsInfo").GetComponent<TextMeshProUGUI>();
-            itemsInfo.text = "Get\n";
-            itemsInfo.GetComponentInParent<InfoManager>().ShowInfo();
+            itemsInfo.text = "Get\n";            
 
             //access backpack system
             BackpackManager backpack = GameObject.Find("Backpack").GetComponent<BackpackManager>();
@@ -53,7 +52,8 @@ namespace MapObject.Interactable
                     continue;
                 }
                 backpack.itemList.Add(itemInBox);
-            }          
+            }
+            itemsInfo.GetComponentInParent<InfoManager>().ShowInfo();
         }
     }
 }
