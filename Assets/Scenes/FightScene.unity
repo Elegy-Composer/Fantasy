@@ -604,6 +604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 1261139272}
   controlled: {fileID: 1261139269}
+  speed: 0
 --- !u!60 &1261139271
 PolygonCollider2D:
   m_ObjectHideFlags: 0
