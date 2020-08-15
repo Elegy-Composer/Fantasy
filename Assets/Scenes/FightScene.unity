@@ -502,6 +502,7 @@ GameObject:
   - component: {fileID: 1261139271}
   - component: {fileID: 1261139270}
   - component: {fileID: 1261139269}
+  - component: {fileID: 1261139273}
   m_Layer: 0
   m_Name: Protagonist
   m_TagString: Untagged
@@ -602,9 +603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e5ed18be51d4cf8be2e9e2046a3a334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body: {fileID: 1261139272}
   controlled: {fileID: 1261139269}
-  speed: 0
 --- !u!60 &1261139271
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -822,6 +821,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1261139273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261139266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b81f3cf94acc54c528ad5de2128d5c16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  body: {fileID: 1261139272}
+  speed: 0
 --- !u!1 &2116146931
 GameObject:
   m_ObjectHideFlags: 0
