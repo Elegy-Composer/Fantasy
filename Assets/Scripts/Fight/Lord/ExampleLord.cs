@@ -1,38 +1,45 @@
 using System;
-using Fight.Bullet;
+using System.Collections;
 using UnityEditor;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 
 namespace Fight.Lord
 {
     public class ExampleLord : Lord
     {
+        private const int BulletsPerAttack = 5;
+        private double _angleOffset;
+        private const double Round = Math.PI * 2;
         public ExampleLord(int attack, int defense, int speed, int hp) : base(attack, defense, speed, hp)
         {
             
         }
 
-        public void Update()
+        private void Start()
         {
-            if (Input.GetKeyDown("o"))
+            _angleOffset = 0;
+            StartCoroutine(MultipleAttacks(9, 1));
+        }
+
+        private IEnumerator MultipleAttacks(int rounds, float pauseTime)
+        {
+            for (var i = 0; i < rounds; i++)
             {
-                Debug.Log("attack key pressed");
                 Attack();
+                yield return new WaitForSeconds(pauseTime);
+                _angleOffset += Round / rounds;
             }
         }
 
         public override void Attack()
         {
             var bullet = LoadBullet();
-            const double round = Math.PI * 2;
-            for (var i = 0; i < 5; i++)
+            
+            for (var i = 0; i < BulletsPerAttack; i++)
             {
-                var currentAngle = round / 5 * i;
+                var currentAngle = _angleOffset + Round / BulletsPerAttack * i;
                 var velocity = new Vector2((float) Math.Sin(currentAngle), (float) Math.Cos(currentAngle)).normalized;
-                var t = transform;
-                var newBullet = Instantiate(bullet, t.position, t.rotation);
-                newBullet.GetComponent<Bullet.Bullet>().velocity = velocity;
+                Bullet.Bullet.InitializeBullet(bullet, this, velocity, transform);
             }
         }
 

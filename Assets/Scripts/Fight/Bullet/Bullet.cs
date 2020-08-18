@@ -9,15 +9,15 @@ namespace Fight.Bullet
         public LivingThing.LivingThing sender;
         public int attack;
         public Rigidbody2D body;
-
-        public static T CreateComponent<T>(GameObject obj, LivingThing.LivingThing sender, Vector2 velocity) where T:Bullet
+        
+        public static void InitializeBullet(GameObject prefab, LivingThing.LivingThing sender, Vector2 velocity, Transform t)
         {
-            var bullet = obj.AddComponent<T>();
+            var obj = Instantiate(prefab, t.position, t.rotation);
+            var bullet = obj.GetComponent<Bullet>();
             bullet.velocity = velocity;
             bullet.sender = sender;
             bullet.attack = sender.attack;
             bullet.body = obj.GetComponent<Rigidbody2D>();
-            return bullet;
         }
     }
 }
