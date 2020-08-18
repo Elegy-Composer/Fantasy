@@ -10,18 +10,18 @@ namespace LivingThing
         public Rigidbody2D body;
         public float speed;
 
-        private Vector2 moveVector;
+        private Vector2 _moveVector;
 
         void Update()
         {
             float x = Input.GetAxis("Horizontal");
             float y = Input.GetAxis("Vertical");
-            moveVector = new Vector2(x, y);
+            _moveVector = new Vector2(x, y);
         }
 
         void FixedUpdate()
         {
-            body.MovePosition(body.position + moveVector * speed * Time.fixedDeltaTime);
+            body.MovePosition(body.position + speed * Time.fixedDeltaTime * _moveVector );
         }
     }
 }
