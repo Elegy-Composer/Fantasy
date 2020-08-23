@@ -16,7 +16,9 @@ namespace Fight.Character
             var control = gameObject.GetComponent<UserControl>();
             control.speed = speed;
             // ReSharper disable once PossibleNullReferenceException
-            control.bounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+            var zPosition = Camera.main.transform.position.z;
+            control.downRight = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, zPosition));
+            control.upLeft = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, zPosition));
         }
     }
 }

@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Serialization;
+﻿using UnityEngine;
 
 namespace LivingThing
 {
@@ -10,7 +7,8 @@ namespace LivingThing
 
         public Rigidbody2D body;
         public float speed;
-        public Vector2 bounds = new Vector2(Mathf.Infinity, Mathf.Infinity);
+        public Vector2 upLeft = new Vector2(Mathf.Infinity, Mathf.Infinity);
+        public Vector2 downRight = new Vector2(0, 0);
         private Vector2 _spriteSize;
 
         private Vector2 _moveVector;
@@ -30,8 +28,8 @@ namespace LivingThing
         void FixedUpdate()
         {
             var futurePosition = body.position + speed * Time.fixedDeltaTime * _moveVector;
-            futurePosition.x = Mathf.Clamp(futurePosition.x, -bounds.x + _spriteSize.x, bounds.x - _spriteSize.x);
-            futurePosition.y = Mathf.Clamp(futurePosition.y, -bounds.y + _spriteSize.y, bounds.y - _spriteSize.y);
+            futurePosition.x = Mathf.Clamp(futurePosition.x, upLeft.x + _spriteSize.x, downRight.x - _spriteSize.x);
+            futurePosition.y = Mathf.Clamp(futurePosition.y, upLeft.y + _spriteSize.y, downRight.y - _spriteSize.y);
             body.MovePosition(futurePosition);
         }
     }
