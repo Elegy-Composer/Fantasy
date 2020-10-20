@@ -1,5 +1,6 @@
 
 using LivingThing;
+using UnityEngine;
 
 namespace Fight.Character
 {
@@ -12,7 +13,12 @@ namespace Fight.Character
 
         private void Start()
         {
-            gameObject.GetComponent<UserControl>().speed = speed;
+            var control = gameObject.GetComponent<UserControl>();
+            control.speed = speed;
+            // ReSharper disable once PossibleNullReferenceException
+            var zPosition = Camera.main.transform.position.z;
+            control.downRight = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, zPosition));
+            control.upLeft = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, zPosition));
         }
     }
 }

@@ -14,6 +14,8 @@ namespace MapObject.Interactable
 
         public override void Interact()//open the box
         {
+            #region old code
+            /*
             //make sure the box is opened
             isOpen = true;
             gameObject.tag = "opened";
@@ -26,34 +28,50 @@ namespace MapObject.Interactable
             //access backpack system
             BackpackManager backpack = GameObject.Find("Backpack").GetComponent<BackpackManager>();
 
-            foreach (Item itemInBox in itemList)
+            try
             {
-                bool nextItem=false;
-                //show what you got
-                itemsInfo.text += (itemInBox.body.name + "        x " + itemInBox.amount.ToString() + "\n");
-
-                foreach (Item itemInPack in backpack.itemList)
+                foreach (Item itemInBox in itemList)
                 {
-                    if (itemInBox.body == itemInPack.body)//already have the same item
+                    bool nextItem = false;
+                    //show what you got
+                    itemsInfo.text += (itemInBox.name + "     x " + itemInBox.amount.ToString() + "\n");
+
+                    /*foreach (Item itemInPack in backpack.itemList)
                     {
-                        Debug.Log("have same item");
+                        if (itemInBox.body == itemInPack.body)//already have the same item
+                        {
+                            Debug.Log("have same item");
 
-                        Item t = new Item();//replace the old item
-                        t.body = itemInBox.body;
-                        t.amount = (itemInPack.amount + itemInBox.amount);
-                        backpack.itemList[backpack.itemList.IndexOf(itemInPack)] = t;
+                            Item t = new Item();//replace the old item
+                            t.body = itemInBox.body;
+                            t.amount = (itemInPack.amount + itemInBox.amount);
+                            backpack.itemList[backpack.itemList.IndexOf(itemInPack)] = t;
 
-                        nextItem = true;
-                        break;
+                            nextItem = true;
+                            break;
+                        }
                     }
+                    if (nextItem)
+                    {
+                        continue;
+                    }
+                    backpack.itemList.Add(itemInBox);
                 }
-                if (nextItem)
-                {
-                    continue;
-                }
-                backpack.itemList.Add(itemInBox);
+            }
+            catch
+            {
+
             }
             itemsInfo.GetComponentInParent<InfoManager>().ShowInfo();
+            */
+            #endregion
+
+            if (GameObject.Find("Backpack").GetComponent<BackpackManager>().AddItem(itemList))
+            {
+                isOpen = true;
+                gameObject.tag = "opened";
+                gameObject.GetComponentInChildren<SpriteRenderer>().sprite = openSprite;
+            }
         }
     }
 }

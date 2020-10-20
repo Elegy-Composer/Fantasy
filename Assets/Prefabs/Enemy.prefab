@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   move:
     _rb: {fileID: 8510521942677746910}
-    _moveSpeed: 1.4
+    moveSpeed: 1
     movement: {x: 0, y: 0}
     isFacingRight: 0
     _anim: {fileID: 4189958330967531288}

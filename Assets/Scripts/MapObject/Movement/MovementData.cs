@@ -17,13 +17,7 @@ namespace MapObject.Movement
             get { return _rb; }
         }
 
-        [SerializeField]
-        private float _moveSpeed;
-        public float moveSpeed
-        {
-            get { return _moveSpeed; }
-        }
-
+        public float moveSpeed;
         public Vector2 movement;
         public bool isFacingRight;
 
