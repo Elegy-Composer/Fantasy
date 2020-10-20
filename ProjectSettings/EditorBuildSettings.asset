@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FightScene.unity
     guid: 5d0a71f0bfc6844ebbd91e99a7be8308
+  - enabled: 1
+    path: Assets/Scenes/ConvinenceStore.unity
+    guid: 3cf2673dbea352146865a07be9300794
+  - enabled: 1
+    path: Assets/Scenes/Storeroom.unity
+    guid: c713928f08a76b14e903c4f43d1e4f7d
   m_configObjects: {}

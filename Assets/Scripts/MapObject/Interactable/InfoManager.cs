@@ -17,7 +17,8 @@ namespace MapObject.Interactable
         {
             OnScreen = true;
             gameObject.GetComponent<Image>().enabled = true;
-            GetComponent<Animator>().Play("Get_Item_Info_Pop_Out");
+            //GetComponent<Animator>().Play("Get_Item_Info_Pop_Out");
+            GetComponent<Animator>().SetBool("isOpen",true);
         }
 
         private void Update()
@@ -35,7 +36,8 @@ namespace MapObject.Interactable
         public override void Interact()//when player press z than disappear
         {
             OnScreen = false;
-            GetComponent<Animator>().Play("Get_Item_Info_Hide");
+            //GetComponent<Animator>().Play("Get_Item_Info_Hide");
+            GetComponent<Animator>().SetBool("isOpen",false);
         }
 
         public void HideInfo()

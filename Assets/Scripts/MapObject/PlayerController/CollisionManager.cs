@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
+using MapObject.Interactable;
 using Fight;
 
 namespace MapObject.PlayerController
@@ -23,8 +23,17 @@ namespace MapObject.PlayerController
             if (collision.gameObject.tag == "treasurebox")
             {
                 Debug.Log("find a treasure box");
+                collision.gameObject.GetComponent<Interactable.Interactable>().ShowIcon();
                 hint.GetComponent<Animator>().enabled = true;
                 hint.GetComponent<TextMeshProUGUI>().text = "press z to open";
+                interactObject = collision.gameObject;
+            }
+            if (collision.gameObject.tag == "npc")
+            {
+                Debug.Log("find a talkable object");
+                collision.gameObject.GetComponent<Interactable.Interactable>().ShowIcon();
+                hint.GetComponent<Animator>().enabled = true;
+                hint.GetComponent<TextMeshProUGUI>().text = "press z to chat";
                 interactObject = collision.gameObject;
             }
         }
@@ -33,6 +42,15 @@ namespace MapObject.PlayerController
         {
             if (collision.gameObject.tag == "treasurebox") 
             {
+                collision.gameObject.GetComponent<Interactable.Interactable>().HideIcon();
+                hint.GetComponent<Animator>().enabled = false;
+                hint.GetComponent<TextMeshProUGUI>().text = "";
+                interactObject = null;
+            }
+            if (collision.gameObject.tag == "npc" && !collision.gameObject.GetComponent<DialogTrigger>().InteractStarted)
+            {
+                Debug.Log("EXIT_NPC");
+                collision.gameObject.GetComponent<Interactable.Interactable>().HideIcon();
                 hint.GetComponent<Animator>().enabled = false;
                 hint.GetComponent<TextMeshProUGUI>().text = "";
                 interactObject = null;

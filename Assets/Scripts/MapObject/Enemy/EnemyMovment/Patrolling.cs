@@ -99,7 +99,6 @@ namespace MapObject.Enemy.EnemyMovement
             else
             {
                 int dir = SetDirection();
-                Debug.Log(dir);
                 goalStep = Random.Range(2, 4);
                 currentStep = 0;
                 switch (dir)

@@ -8,6 +8,10 @@ TagManager:
   - enemy
   - treasurebox
   - opened
+  - backpack
+  - npc
+  - focus
+  - usepanel
   layers:
   - Default
   - TransparentFX

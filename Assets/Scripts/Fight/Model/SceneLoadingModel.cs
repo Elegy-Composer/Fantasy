@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Fight.Model
 {
-    public class SceneLoadingModel
+    public static class SceneLoadingModel
     {
         public static string LordName = string.Empty;
     }

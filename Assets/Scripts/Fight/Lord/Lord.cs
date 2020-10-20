@@ -1,17 +1,14 @@
 ﻿
+using UnityEngine.Timeline;
+
 namespace Fight.Lord
 {
-    public class Lord : LivingThing.LivingThing
+    
+    public abstract class Lord : LivingThing.LivingThing
     {
-        public Lord(int attack, int defense, float speed, int hp) : base(attack, defense, speed, hp)
-        {
-
+        protected Lord(int attack, int defense, int hp, int speed) : base(attack, defense, hp, speed) {
+    
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        public abstract void Attack();
     }
 }
